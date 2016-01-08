@@ -3,19 +3,19 @@
 <p>
 	<%= @row['content'] %>
 	<br />
-	<%= @row['created_date'] %>
+	Added at <%= @row['created_date'] %>
 	<br />
 </p>
-<hr />
+
 <br />
 <h4>Comments:</h4>
 <% @comments.each do |item| %>
 <p>
 	<%= item['content'] %>
 	<br />
-	<%= item['created_date'] %>
 	<br />
-</p>
+	<span style="font-size: 75%; color: #999">Added at <%= item['created_date'] %></span>
+	</p>
 <hr />
 <% end %>
 
