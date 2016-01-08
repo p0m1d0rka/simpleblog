@@ -1,0 +1,31 @@
+<h4>Post details </h4>
+
+<p>
+	<%= @row['content'] %>
+	<br />
+	<%= @row['created_date'] %>
+	<br />
+</p>
+<hr />
+<br />
+<h4>Comments:</h4>
+<% @comments.each do |item| %>
+<p>
+	<%= item['content'] %>
+	<br />
+	<%= item['created_date'] %>
+	<br />
+</p>
+<hr />
+<% end %>
+
+
+
+<br />
+<h4>Add new comment:</h4>
+
+<form action="/details/<%= @row['id'] %>" method="POST">
+	 <textarea name="content" class="form-control" rows="6" placeholder="Type comment text here"></textarea>
+	 <br />
+ 	 <button type="submit" class="btn btn-primary">Отправить</button>
+</form>
