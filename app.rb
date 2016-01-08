@@ -23,7 +23,8 @@ configure do
 end
 
 get '/' do
-  erb 'root'
+	@results = @db.execute 'select * from Posts order by id desc'
+  	erb :index
 end
 
 get '/new' do
@@ -32,5 +33,13 @@ end
 
 post '/new' do
 	content = params[:content]
-	erb "You typed #{content}"
+
+	if content.length <= 0 
+		@error = 'Type text'
+		return erb :new
+	end 
+
+	@db.execute 'insert into Posts (content, created_date) values (?, datetime())',[content]
+
+	redirect to '/'
 end
